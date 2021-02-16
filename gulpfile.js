@@ -18,7 +18,7 @@ function setMode(isProduction = false) {
   }
 }
 
-const dev = gulp.parallel(pug2html, styles, script, fonts, imageMinify, svgSprite)
+const dev = gulp.parallel(pug2html, styles, script, imageMinify, svgSprite, fonts)
 
 const build = gulp.series(
   clean, 
