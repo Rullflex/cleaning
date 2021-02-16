@@ -1,7 +1,6 @@
 const gulp = require('gulp')
 // const ttf2woff = require('gulp-ttf2woff')
 // const ttf2woff2 = require('gulp-ttf2woff2')
-const gulpCopy = require('gulp-copy')
 
 module.exports = function fonts() {
 	// return gulp.src(["src/**/*.ttf", "!src/**/_*.ttf"])
@@ -12,10 +11,8 @@ module.exports = function fonts() {
 	// 	.pipe(gulp.dest('build/'));
 	return gulp
 		.src(["src/**/*.woff"])
-		// .pipe(gulpCopy())
 		.pipe(gulp.dest('build/'))
 		.pipe(gulp.src(["src/**/*.woff2"]))
-		// .pipe(gulpCopy())
 		.pipe(gulp.dest('build/'));
 }
 
