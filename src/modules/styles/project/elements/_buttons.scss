@@ -1,0 +1,102 @@
+$disabled: ".disabled";
+.uk-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    cursor: pointer;
+    
+    transition: $transition--hover;
+
+    font-family: "Raleway";
+    text-align: center;
+}
+
+.btn {
+    &-solid {
+        @mixin btn-solid($btn-color, $font-color) {
+
+            background: $btn-color;
+            border-radius: 1.875rem;
+
+            color: $font-color;
+            font-weight: 500;
+
+            &:active {
+                box-shadow: 0.0625rem 0.125rem 0.5rem 0.3125rem rgba($btn-color, 0.2);
+                font-weight: 800;
+            }
+            @media (min-width: map-get($grid-breakpoints, lg)) {
+                &:hover {
+                    box-shadow: 0.0625rem 0.125rem 0.5rem 0.3125rem rgba($btn-color, 0.2);
+                    font-weight: 800;
+                }
+            }
+        }
+        &-primary {
+            @include btn-solid($primary, $text-light);
+            $self: &;
+            #{$self + $disabled} {
+                background: $muted;
+            }
+        }
+        &-muted {
+            @include btn-solid($muted, $text-light);
+        }
+    }
+    &-outline {
+        @mixin btn-outline($btn-color: $primary) {
+
+            border: 0.0625rem solid $btn-color;
+            background: transparent;
+            border-radius: 1.875rem;
+
+            color: $btn-color;
+            font-weight: 500;
+
+            &:active {
+                background: $btn-color;
+                color: $text-light;
+            }
+            @media (min-width: map-get($grid-breakpoints, lg)) {
+                &:hover {
+                    background: $btn-color;
+                    color: $text-light;
+                }
+            }
+        }
+        &-primary {
+            @include btn-outline();
+
+        }
+        &-muted {
+            @include btn-outline($muted);
+        }   
+        &-yellow {
+            @include btn-outline($yellow);
+        }    
+        &-white {
+            @include btn-outline(white);
+        }
+    }
+    &-yellow {
+        background: linear-gradient(90deg, #FEED01 0%, #FCCB1E 100%);
+        box-shadow: 0.0625rem 0.125rem 0 #FFB800, 0.125rem 0.1875rem 0.375rem #FFB800;
+        border-radius: 3.125rem;
+        transition: unset;
+        color: #444444;
+        &:active {
+            background: linear-gradient(90deg, #FCCC1D 0%, #F58400 100%);
+            box-shadow: 0.0625rem 0.125rem #F38300, 0.125rem 0.1875rem 0.375rem #FF9900;
+        }
+        @media (min-width: map-get($grid-breakpoints, md)) {
+        }
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            &:hover {
+                background: linear-gradient(90deg, #FCCC1D 0%, #F58400 100%);
+                box-shadow: 0.0625rem 0.125rem #F38300, 0.125rem 0.1875rem 0.375rem #FF9900;
+            }
+        }
+    }
+}

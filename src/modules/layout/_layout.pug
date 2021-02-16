@@ -1,0 +1,34 @@
+include _mixins
+include _vars
+
+doctype html
+html(lang=`${language == 'ru' ? 'ru' : 'uk'}`)
+	head
+		block head
+			meta(charset="utf-8")
+			meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+			meta(name="format-detection" content="telephone=no")
+			meta(content="ie=edge" http-equiv="x-ua-compatible")
+			meta(property="og:image" content=`${mainPageLink}ogimage.jpg`)
+			
+			link(rel="stylesheet" href="assets/styles/main.min.css")
+
+			include includes/_favicon
+			include includes/_metrika
+	body
+		.app-wrapper
+			block header
+				include widgets/_header
+			block content
+			block footer
+				include widgets/_footer
+			block popup
+				include widgets/popups/_popup-callback
+				include widgets/popups/_popup-thanks
+				include widgets/popups/_popup-rig
+				include widgets/popups/_popup-quiz-1
+				include widgets/popups/_popup-quiz-2
+				include widgets/popups/_popup-quiz-3
+				include widgets/popups/_popup-quiz-4
+			block scripts
+				script(src='assets/scripts/main.min.js' defer)

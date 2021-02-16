@@ -1,0 +1,47 @@
+header.header
+    .container
+        .header__row
+            a.header__logo(href="/")
+                +picture(png, `${modules}logo`)(class="header__img-logo" alt=companyName)
+            .header__location
+                +icon('pin')
+                span= lang[1]
+            .header__lang-wrap
+                if language == 'ukr'
+                    a.header__lang(href="/")
+                        +icon('flag-ru')
+                        span ru
+                    .header__lang-div
+                    .header__lang.header__lang--active
+                        +icon('flag-ukr')
+                        span ukr
+                else
+                    .header__lang.header__lang--active
+                        +icon('flag-ru')
+                        span ru
+                    .header__lang-div
+                    a.header__lang(href="/")
+                        +icon('flag-ukr')
+                        span ukr
+            a.uk-button.btn-outline-yellow.header__btn.d-none.d-lg-flex(href="#callback" data-uk-toggle="")= lang[2]
+            .header__info.d-none.d-lg-block
+                a.header__info-tel(href=phoneLink)= phoneNumber
+                .header__info-status= lang[3]
+            //- burger
+            a.uk-icon.header__burger(href="#")
+                - for (var x = 0; x < 4; x++) 
+                    i
+            .header__drop.uk-navbar-dropdown(data-uk-dropdown="mode: click; pos: bottom-justify; boundary: .header; boundary-align: true; animation: uk-animation-slide-top-small; duration: 300")
+                .header__drop-nav
+                    +picture(png, `${modules}logo-white-sm`, 'n')(class="header__drop-logo")
+                    p.header__drop-descr!= lang[48]
+                    .header__drop-icons 
+                        a.header__drop-icon(href=instLink) 
+                            +icon('social-inst', 'white')
+                        a.header__drop-icon(href=fbLink) 
+                            +icon('social-fb', 'white')
+                    a.header__drop-tel(href=phoneLink)= phoneNumber
+                    .header__drop-status= lang[3]
+                    a.uk-button.btn-outline-white.header__drop-btn(href="#callback" data-uk-toggle="")= lang.cb
+                    a.header__drop-email(href=`mailto:${mailAdress}`)= mailAdress
+            //- end burger
