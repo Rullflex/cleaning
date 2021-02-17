@@ -16,7 +16,9 @@ class App {
         this.md = 768
         this.lg = 1280
 
-        this._apiBase = 'https://www.rully.ru/api/';  
+        this.lang = 'ru'
+
+        this._apiBase = '/';  
     }
 
     init() {
@@ -166,17 +168,37 @@ class Quiz extends App {
     }
 
     onFinalSlideShow() {
-        // this.quiz.querySelector(`form .values`).innerHTML = ``
+        this.quiz.querySelector(`form .values`).innerHTML = ``
         this.quiz.querySelectorAll(`.quiz-slide`).forEach((el, idx, arr) => {
             if (idx != arr.length - 1) {
                 let list = []
-                el.querySelectorAll(`.${this.activeClass}`).forEach(e => list.push(e.getAttribute("data-value")))
-                console.log(el.getAttribute(`data-title`), list.join(`, `))
-                // this.quiz.querySelector(`form .values`).insertAdjacentHTML('beforeend', `<input type="hidden" name="${el.getAttribute(`data-title`)}" value="${list.join(`, `)}">`)
+                el.querySelectorAll(`.${this.activeClass}`).forEach(e => {
+                    const value = e.getAttribute("data-value")
+                    let name = ''
+                    if (e.getAttribute("data-name")) {
+                        name = e.getAttribute("data-name") + ': '
+                    }
+                    list.push(name + value)
+                })
+                el.querySelectorAll(`.quiz__input`).forEach(e => list.push(e.value))
+                // console.log(el.getAttribute(`data-title`), list.join(`, `))
+                this.quiz.querySelector(`form .values`).insertAdjacentHTML('beforeend', `<input type="hidden" name="${el.getAttribute(`data-title`)}" value="${list.join(`, `)}">`)
             }
             
         })
-        
+        const formData = new FormData(this.quiz.querySelector(`form`))
+        fetch(`${this._apiBase}mail.php`, {
+            method: 'post',
+            body: formData,
+            mode: 'no-cors'
+        }).then(response => {
+            // console.log(response)
+            return response.text()
+        }).then(text => {
+            // console.log(text)
+        }).catch(error => {
+            console.error(error)
+        })
     }
 
     reset() {
@@ -230,7 +252,7 @@ class Form extends App {
               },
               format: {
                 // We don't allow anything that a-z and 0-9
-                pattern: "[а-я]+",
+                pattern: "[А-яA-z ]+",
                 // but we don't care if the username is uppercase or lowercase
                 flags: "i",
                 message: "Только русские буквы"
@@ -306,16 +328,24 @@ class Form extends App {
 
 
     phoneMask(form) {
+        let options = {
+            mask: `+7 (000) 000-00-00`,
+            startsWith: `7`,
+            lazy: false,
+            country: `Russia`
+        }
+        if (this.lang === `ukr`) {
+            options = {
+                mask: `+38\\0 00 000 0000`,
+                lazy: false,
+                country: `Ukraine`
+            }
+        }
         let mask
         document.querySelectorAll(`${form} input[name=Телефон]`).forEach((e) => {
             e.addEventListener(`focusin`, () => {
                 mask = IMask(
-                    e, {
-                        mask: `+7 (000) 000-00-00`,
-                        startsWith: `7`,
-                        lazy: false,
-                        country: `Russia`
-                    })
+                    e, options)
             })
             e.addEventListener(`focusout`, () => {
                 if (mask.value.match(/_/g) != null) {

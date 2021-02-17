@@ -9,7 +9,7 @@ html(lang=`${language == 'ru' ? 'ru' : 'uk'}`)
 			meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
 			meta(name="format-detection" content="telephone=no")
 			meta(content="ie=edge" http-equiv="x-ua-compatible")
-			meta(property="og:image" content=`${mainPageLink}ogimage.jpg`)
+			meta(property="og:image" content=`${mainPageLink}ogimage-${language == 'ru' ? 'ru' : 'uk'}.jpg`)
 			
 			link(rel="stylesheet" href="assets/styles/main.min.css")
 
@@ -23,12 +23,6 @@ html(lang=`${language == 'ru' ? 'ru' : 'uk'}`)
 			block footer
 				include widgets/_footer
 			block popup
-				include widgets/popups/_popup-callback
-				include widgets/popups/_popup-thanks
-				include widgets/popups/_popup-rig
-				include widgets/popups/_popup-quiz-1
-				include widgets/popups/_popup-quiz-2
-				include widgets/popups/_popup-quiz-3
-				include widgets/popups/_popup-quiz-4
+				include widgets/_popups
 			block scripts
 				script(src='assets/scripts/main.min.js' defer)

@@ -10,3 +10,14 @@
 @import "./widgets/popup-thanks";
 @import "./widgets/popup-rig";
 @import "./widgets/form";
+#v-about {
+    .popup {
+        &__body {
+            padding: 0;
+            iframe {
+                border-radius: 0.5rem;
+                margin-bottom: -0.4rem;
+            }
+        }
+    }
+}

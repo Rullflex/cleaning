@@ -1,8 +1,8 @@
 extends modules/layout/_layout
 
 prepend head
-	title Клининг
-	meta(name="description", content="Описание страницы")
+	title= lang.title
+	meta(name="description", content=lang.description)
 
 block content
 	main.main
@@ -13,7 +13,7 @@ block content
 				.s1__circle
 				h1.s1__title #[= lang[4][0]]#[br] #[span.text-primary= lang[4][1]]
 				p.s1__subtitle!= lang[5]
-				a.uk-button.btn-yellow.s1__btn(href="#callback" data-uk-toggle="")!= lang[6]
+				a.uk-button.btn-yellow.s1__btn(href="#rig" data-uk-toggle="")!= lang[6]
 				.s1__items
 					-
 						var list = [

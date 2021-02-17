@@ -387,6 +387,9 @@
                 text-align: center;
                 font-size: 1.125rem;
                 height: 3rem;
+                @if $lang == 'ukr' {
+                    padding: 0 0.2rem;
+                }
             }
             &--sm {
                 #{$self + -value} {}

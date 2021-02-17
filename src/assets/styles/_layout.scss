@@ -2381,8 +2381,14 @@
                     align-items: center;
                     flex-shrink: 0;
                     height: 4.3125rem;
-                    padding-left: 2.04rem;
-                    padding-right: 2.04rem;
+                    @if $lang == 'ru' {
+                        padding-left: 2.04rem;
+                        padding-right: 2.04rem;
+                    }
+                    @if $lang == 'ukr' {
+                        padding-left: 2.12rem;
+                        padding-right: 2.12rem;
+                    }
 
                     transition: $transition--very-fast;
 
