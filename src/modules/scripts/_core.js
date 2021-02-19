@@ -16,7 +16,7 @@ class App {
         this.md = 768
         this.lg = 1280
 
-        this.lang = 'ru'
+        this.lang = 'ukr'
 
         this._apiBase = '/';  
     }
@@ -25,6 +25,8 @@ class App {
         // FORM
         const form = new Form()
         form.init()
+        form.phoneMask('.quiz-slide .input-wrap')
+
 
         document.querySelector(`.header__drop-btn`).addEventListener('click', () => UIkit.dropdown(`.header__drop`).hide(0))
 
@@ -83,6 +85,7 @@ class Quiz extends App {
         this.lastIndex = this.numberOfSlides - 1
         this.quiz = document.querySelector(this.selector)
 
+        this.FormHelper = new Form()
     }
 
     create () {
@@ -103,9 +106,43 @@ class Quiz extends App {
             this.toPrevSlide()
         })
         this.quiz.querySelector(`.quiz-btn-next`).addEventListener(`click`, ev => {
-            this.toNextSlide()
+            // ВАЛИДАЦИЯ
+            if (this.quiz.querySelector(`.quiz-slide.${this.activeClass}`).classList.contains('quiz-validate')) {
+                const wrap = this.quiz.querySelector(`.quiz-slide.${this.activeClass}`)
+                let errors = validate(wrap, this.FormHelper.formConstraints(wrap));
+                // then we update the form to reflect the results
+                this.FormHelper.showErrors(wrap, errors || {});
+                if (!errors) {
+                    this.toNextSlide()
+                }
+            } else {
+                this.toNextSlide()
+            }
         })
-        
+
+
+        // ВАЛИДАЦИЯ ПРИ СОЗДАНИИ
+        const form = new Form()
+        this.quiz.querySelectorAll('.quiz-slide .input-wrap').forEach((el) => {
+            el.addEventListener("change", ev => {
+                const target = ev.target
+                const currentForm = target.closest('.quiz-slide')
+                const errors = validate(currentForm, this.FormHelper.formConstraints(currentForm)) || {}
+                this.FormHelper.showErrorsForInput(target, errors[target.name])
+
+                // this.quiz.querySelector(`.quiz-btn-next`).removeAttribute('disabled')
+                // this.quiz.querySelector(`.quiz-btn-next`).classList.remove('btn-solid-muted')
+            })
+            el.addEventListener("input", ev => {
+                this.quiz.querySelector(`.quiz-btn-next`).removeAttribute('disabled')
+                this.quiz.querySelector(`.quiz-btn-next`).classList.remove('btn-solid-muted')
+            })
+            if (this.FormHelper.removeErrorOnFocus) {
+                el.addEventListener('focus', ev => {
+                    ev.target.closest(this.FormHelper.formInput).classList.remove(this.FormHelper.classHasError)
+                })
+            }
+        })
     }
 
     refreshValues() {
@@ -135,7 +172,15 @@ class Quiz extends App {
             // }
             
         }
-        
+
+        // ВАЛИДАЦИЯ
+        if (this.quiz.querySelector(`.quiz-slide.${this.activeClass}`).classList.contains('quiz-validate')) {
+            this.quiz.querySelector(`.quiz-btn-next`).setAttribute('disabled', true)
+            this.quiz.querySelector(`.quiz-btn-next`).classList.add('btn-solid-muted')
+        } else {
+            this.quiz.querySelector(`.quiz-btn-next`).removeAttribute('disabled')
+            this.quiz.querySelector(`.quiz-btn-next`).classList.remove('btn-solid-muted')
+        }
     }
 
     toNextSlide() {
@@ -217,7 +262,7 @@ class Form extends App {
         this.formInput = `.input-wrap`
         this.disableIMask = false,
         this.disableMessages = true,
-        this. removeErrorOnFocus = true,
+        this.removeErrorOnFocus = true,
         this.constraints = {
             email: {
               // Email is required
@@ -292,6 +337,9 @@ class Form extends App {
               }
             },
             "Телефон": {
+                presence: true
+            },
+            "Площадь": {
                 presence: true
             }
         }
@@ -378,7 +426,7 @@ class Form extends App {
         // We loop through all the inputs and show the errors for that input
           // Since the errors can be null if no errors were found we need to handle
           // that
-        form.querySelectorAll("input[name], select[name]").forEach(input => this.showErrorsForInput(input, errors && errors[input.name]))
+        form.querySelectorAll(`input.input:not([type="hidden"])`).forEach(input => this.showErrorsForInput(input, errors && errors[input.name]))
     }
 
       // Shows the errors for a specific input
@@ -424,7 +472,7 @@ class Form extends App {
         block.classList.add("error");
         block.innerText = error;
         if (!this.disableMessages && messages != null) {
-            messages.appendChild(block);
+            messages.appendChild(block)
         }
     }
 
@@ -436,8 +484,7 @@ class Form extends App {
         // } else {
         //     ym(71270149,'reachGoal','form')
         // }
-        UIkit.modal(`#thanks`).show()
-        // alert('отправлено')
+        UIkit.modal(`#thanks`).show();
 
         fetch(`${this._apiBase}mail.php`, {
             method: 'post',
@@ -455,7 +502,7 @@ class Form extends App {
 
     formConstraints(form) {
         let localConstraints = {}
-        form.querySelectorAll(`input[name], select[name]`).forEach(e => {
+        form.querySelectorAll(`input.input:not([type="hidden"])`).forEach(e => {
             if (this.constraints[e.name] != undefined) {
                 localConstraints[e.name] = this.constraints[e.name]
             }

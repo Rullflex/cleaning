@@ -82,7 +82,7 @@ mixin quiz-slide-first(idx)
 			+quiz-radio(lang[63][3], `${idx != 4 ? `#quiz-4` : ''}`, `${assets}s3-i4`)(class=`${idx == 4 ? 'quiz-active' : ''} quiz__radio--sm`)
 
 mixin quiz-slide-dimentions()
-	.quiz-slide(data-title=lang[64])
+	.quiz-slide.quiz-validate(data-title=lang[64])
 		h3= lang[64]
 		.input-wrap 
 			input.quiz__input.input(type="text" name="Площадь" placeholder=`${lang[65]}, м2`)

@@ -6,7 +6,7 @@ import { App, Quiz, Form } from '../../modules/scripts/_core'
 document.addEventListener(`DOMContentLoaded`, function () {
     const app = new App()
     app.init()
-   
+
     // QUIZ
     const quiz1 = new Quiz({
         selector: `#quiz-1`,
@@ -60,10 +60,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
         startSlide: 1
     })
     quiz4.create()
-
-    const form = new Form()
-    form.phoneMask('.quiz-slide .input-wrap')
     
+    
+
     // app.matchMediaListener(app.md, () => location.reload(), () => location.reload())
     // app.matchMediaListener(app.lg, () => location.reload(), () => location.reload())
     if (window.innerWidth < app.md) {
