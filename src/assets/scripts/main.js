@@ -206,6 +206,10 @@ document.addEventListener(`DOMContentLoaded`, function () {
     })
 
 
+    UIkit.scrollspy(`#v-about`)
+    document.querySelector(`#v-about`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#v-about .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/McoE4IXVyHk" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
     
 
 })

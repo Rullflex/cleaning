@@ -21,6 +21,7 @@
     #callback {
         .form {
             &__img {
+                &-tel {position: absolute;}
                 &-tel.lazyloaded {
                     width: 24.9375rem;
                     margin-left: 0;

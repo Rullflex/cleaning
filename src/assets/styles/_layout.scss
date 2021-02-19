@@ -1,12 +1,13 @@
 .s1 {
     padding-top: 0.8rem;
     &-img {
+        &-woman {position: absolute;}
         &-woman.lazyloaded {
             width: 22.4375rem;
 
             pointer-events: none;
 
-            position: absolute;
+            
             bottom: 0;
             right: -6.66rem;
             z-index: 3;
