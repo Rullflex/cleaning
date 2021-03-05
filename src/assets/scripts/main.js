@@ -7,6 +7,10 @@ document.addEventListener(`DOMContentLoaded`, function () {
     const app = new App()
     app.init()
 
+    document.querySelectorAll(`a[href="tel:+380638671191"]`).forEach(el => {
+        el.addEventListener('click', () => ym(72786013,'reachGoal','call'))
+    })
+
     // QUIZ
     const quiz1 = new Quiz({
         selector: `#quiz-1`,

@@ -26,10 +26,12 @@
     #rig {
         .form {
             &__img {
+                &-car {
+                    position: absolute;
+                }
                 &-car.lazyloaded {
                     width: 24.9375rem;
                     margin-left: 0;
-                    position: absolute;
                     top: 5.0625rem;
                     left: 1.8rem;
                 }

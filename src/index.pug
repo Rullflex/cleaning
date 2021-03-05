@@ -109,7 +109,7 @@ block content
 							p.s3__manager-name= lang[16]
 							p.s3__manager-pos= lang[17]
 							a.s3__manager-btn.uk-button.btn-solid-primary(href="#callback" data-uk-toggle)= lang[18]
-							a.s3__manager-tel(href=phoneLink)= phoneNumber
+							a.s3__manager-tel(href=phoneLink)!= phoneNumber
 		section.s4
 			.container
 				h2= lang[19]
@@ -346,7 +346,7 @@ block content
 						a.s10__acc-title.uk-accordion-title(href="#")= lang[45][0]
 							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
 						.s10__acc-content.uk-accordion-content
-							p= lang[46]
+							p= lang[46][0]
 							h5= lang[47]
 							.s10__acc-content__certificates 
 								+picture(jpg, `${assets}s10-cert-i1`, 'n', 'n')(class="s10__acc-content__img")
@@ -357,22 +357,22 @@ block content
 						a.s10__acc-title.uk-accordion-title(href="#")= lang[45][1]
 							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
 						.s10__acc-content.uk-accordion-content
-							p= lang[46]
+							p= lang[46][1]
 					li.s10__acc-item
 						a.s10__acc-title.uk-accordion-title(href="#")= lang[45][2]
 							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
 						.s10__acc-content.uk-accordion-content
-							p= lang[46]
+							p= lang[46][2]
 					li.s10__acc-item
 						a.s10__acc-title.uk-accordion-title(href="#")= lang[45][3]
 							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
 						.s10__acc-content.uk-accordion-content
-							p= lang[46]
+							p= lang[46][3]
 					li.s10__acc-item.s10__acc-item--last
 						a.s10__acc-title.uk-accordion-title(href="#")= lang[45][4]
 							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
 						.s10__acc-content.uk-accordion-content
-							p= lang[46]
+							p= lang[46][4]
 				.s10__manager.d-none.d-lg-flex 
 					+picture(png, `${assets}s10-woman`, 'l', 'l')
 					p.s10__manager-name= lang[16]

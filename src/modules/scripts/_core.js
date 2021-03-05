@@ -16,9 +16,7 @@ class App {
         this.md = 768
         this.lg = 1280
 
-        this.lang = 'ukr'
-
-        this._apiBase = '/';  
+        this._apiBase = '/api/';  
     }
 
     init() {
@@ -232,6 +230,8 @@ class Quiz extends App {
             
         })
         const formData = new FormData(this.quiz.querySelector(`form`))
+        
+        ym(72786013,'reachGoal','form')
         fetch(`${this._apiBase}mail.php`, {
             method: 'post',
             body: formData,
@@ -377,17 +377,9 @@ class Form extends App {
 
     phoneMask(form) {
         let options = {
-            mask: `+7 (000) 000-00-00`,
-            startsWith: `7`,
+            mask: `+38\\0 00 000 0000`,
             lazy: false,
-            country: `Russia`
-        }
-        if (this.lang === `ukr`) {
-            options = {
-                mask: `+38\\0 00 000 0000`,
-                lazy: false,
-                country: `Ukraine`
-            }
+            country: `Ukraine`
         }
         let mask
         document.querySelectorAll(`${form} input[name=Телефон]`).forEach((e) => {
@@ -479,12 +471,8 @@ class Form extends App {
     showSuccess(form) {
         const formData = new FormData(form)
         
-        // if (form.classList.contains(`form-quiz`)) {
-        //     ym(71270149,'reachGoal','quiz')
-        // } else {
-        //     ym(71270149,'reachGoal','form')
-        // }
-        UIkit.modal(`#thanks`).show();
+        UIkit.modal(`#thanks`).show()
+        ym(72786013,'reachGoal','form')
 
         fetch(`${this._apiBase}mail.php`, {
             method: 'post',

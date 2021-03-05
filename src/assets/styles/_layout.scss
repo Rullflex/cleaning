@@ -2855,10 +2855,10 @@
             @include center-item();
             &::after {
                 @if $lang == 'ru' {
-                    content: 'Карта загружается...';
+                    content: 'Загрузка карты...';
                 }
                 @if $lang == 'ukr' {
-                    content: 'Карта завантажується...';
+                    content: 'Завантаження карти...';
                 }
             }
             z-index: -3;

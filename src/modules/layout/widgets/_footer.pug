@@ -10,6 +10,6 @@ footer.footer
                 a.footer__icon(href=fbLink) 
                     +icon('social-fb', 'white')
             .footer__links
-                a.link.footer__tel(href=phoneLink)= phoneNumber
+                a.link.footer__tel(href=phoneLink)!= phoneNumber
                 a.link.footer__email(href=`mailto:${mailAdress}`)= mailAdress
             a.footer__policy(href=privacyLink target="_blank")= lang.policy
