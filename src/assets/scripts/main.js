@@ -214,5 +214,44 @@ document.addEventListener(`DOMContentLoaded`, function () {
         document.querySelector(`#v-about .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/McoE4IXVyHk" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
     })
     
+    
+    UIkit.scrollspy(`#report1`)
+    document.querySelector(`#report1`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report1 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/z1ugF5alEs8" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report2`)
+    document.querySelector(`#report2`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report2 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/noxY9uXG3qg" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report3`)
+    document.querySelector(`#report3`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report3 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/gsavso9rH9s" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report4`)
+    document.querySelector(`#report4`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report4 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/E9SSLdppPkA" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report5`)
+    document.querySelector(`#report5`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report5 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/sXF70OECrLA" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report6`)
+    document.querySelector(`#report6`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report6 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/s3FygX82UJU" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report7`)
+    document.querySelector(`#report7`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report7 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/-NHnVNVdplM" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report8`)
+    document.querySelector(`#report8`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report8 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/hdkPSVA4MSE" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    UIkit.scrollspy(`#report9`)
+    document.querySelector(`#report9`).addEventListener(`inview`, (event) => {
+        document.querySelector(`#report9 .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/--4GhdFi9zM" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+    })
+    
+
 
 })

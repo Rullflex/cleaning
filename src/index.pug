@@ -3,6 +3,7 @@ extends modules/layout/_layout
 prepend head
 	title= lang.title
 	meta(name="description", content=lang.description)
+	meta(name="keywords", content=lang.keywords)
 
 block content
 	main.main
@@ -266,7 +267,7 @@ block content
 						},
 						{
 							icon: 'spray-right',
-							text: lang[39][4],
+							text: lang[39][5],
 							count: 1
 						}
 					]
@@ -329,11 +330,11 @@ block content
 				.s9__slider(data-uk-slider)
 					.uk-slider-container 
 						ul.s9__slider-items.uk-slider-items 
-							- for(var i = 1; i <= 3; i++)
+							- for(var i = 1; i <= 9; i++)
 								li.s9__slider-item 
 									.s9__slider-image.ibg 
 										+picture(jpg, `${assets}s9-i${i}`, 'n', '')
-									a.s9__slider-play.play-video(href="#v" data-uk-toggle="")
+									a.s9__slider-play.play-video(href=`#report${i}` data-uk-toggle="")
 										+icon('playbtn-reverse')
 										.play-video__helper.play-video__helper!=lang[43]
 					+slider-dots(class="slidedots--yellow d-lg-none")
